@@ -184,6 +184,10 @@ impl Polynomial {
 		let temp = self.clone() * other.clone();
         Some((temp / gcd)?.0)
     }
+
+    pub fn gcd_all(v: &[Polynomial]) -> Option<Polynomial> {
+        Some(v.iter().fold( Polynomial::new(vec![0.0]), |acc, x| acc.gcd(x).unwrap()))
+    }
 }
 
 #[cfg(test)]
