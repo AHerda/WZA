@@ -119,14 +119,14 @@ impl std::fmt::Display for Polynomial {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         let mut terms = Vec::new();
         for (i, coeff) in self.coefficients.iter().enumerate() {
-if *coeff != 0.0 {
-	let term = match i {
-		0 => format!("{}", coeff.abs()),
-		1 => format!("{} {}x", if coeff < &0.0 { "-" } else { "+" }, coeff.abs()),
-		_ => format!("{} {}x^{}", if coeff < &0.0 { "-" } else { "+" }, coeff.abs(), i),
-	};
-	terms.push(term);
-}
+            if *coeff != 0.0 {
+                let term = match i {
+                    0 => format!("{}", coeff),
+                    1 => format!("{} {}x", if coeff < &0.0 { "-" } else { "+" }, coeff.abs()),
+                    _ => format!("{} {}x^{}", if coeff < &0.0 { "-" } else { "+" }, coeff.abs(), i),
+                };
+                terms.push(term);
+            }
         }
         let polynomial = terms.join(" ");
         write!(f, "{}", polynomial)

@@ -1,6 +1,6 @@
-mod polynomials;
+pub mod lib;
 
-use polynomials::Polynomial;
+use lib::Polynomial;
 
 fn main() {
     let a = Polynomial::new(vec![1., 1.]);

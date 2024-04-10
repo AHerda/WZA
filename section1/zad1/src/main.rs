@@ -1,6 +1,6 @@
-mod gaussian_numbers;
+mod lib;
 
-use gaussian_numbers::GaussianNumber;
+use lib::GaussianNumber;
 
 fn main() {
     let a = GaussianNumber::new(3, 4);
