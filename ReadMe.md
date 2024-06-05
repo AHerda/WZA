@@ -9,3 +9,4 @@ Adrian Herda
 ## Listy zadań
 * [**Lista 1**](section1/ReadMe.md)
 * [**Lista 2**](section2/ReadMe.md)
+* [**Lista 3**](section3/ReadMe.md)
