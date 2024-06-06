@@ -37,21 +37,33 @@ plot_curve(eq3, (-2, 2), (-2, 2), "Krzywa: 350x^2y^2 - 15^2(x^2 + y^2) + 12^2(x^
 
 # Wyznaczanie punktów osobliwych
 
-def find_singular_points(eq):
+def func_eq1(x, y):
+    return (x**2 + y**2 + 4 * y)**2 - 16 * (x**2 + y**2) == 0
+def func_eq2(x, y):
+    return 2 * (x**2 + 9) * (y**2 - 16) + (x**2 - 9)**2 + (y**2 - 16)**2 == 0
+def func_eq3(x, y):
+    return 350 * x**2 * y**2 - 15**2 * (x**2 + y**2) + 12**2 * (x**4 + y**4) + 81 == 0
+
+def find_singular_points(eq, func):
     x, y = sp.symbols('x y')
     fx = sp.diff(eq, x)
     fy = sp.diff(eq, y)
     singular_points = sp.solve([fx, fy], (x, y), dict=True)
-    return singular_points
+    points = []
+    for point in singular_points:
+        if func(point[x], point[y]):
+            points.append(point)
+            #singular_points.remove(point)
+    return points
 
 # 1. Punkty osobliwe
-singular_points_1 = find_singular_points(eq1)
+singular_points_1 = find_singular_points(eq1, func_eq1)
 print("Punkty osobliwe krzywej 1:", singular_points_1)
 
 # 2. Punkty osobliwe
-singular_points_2 = find_singular_points(eq2)
+singular_points_2 = find_singular_points(eq2, func_eq2)
 print("Punkty osobliwe krzywej 2:", singular_points_2)
 
 # 3. Punkty osobliwe
-singular_points_3 = find_singular_points(eq3)
+singular_points_3 = find_singular_points(eq3, func_eq3)
 print("Punkty osobliwe krzywej 3:", singular_points_3)
